@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something for You 💗</title>
+
+<style>
+* {
+    margin-bottom:0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffe0e9, #ffc2d1, #fff0f3);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    max-width: 420px;
+    width: 100%;
+    padding: 40px 28px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 15px 50px #d85b8020;
+    animation: appear 1s ease;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.emoji {
+    font-size: 65px;
+    animation: bounce 2s infinite;
+}
+
+h1 {
+    color: #e75480;
+    margin: 20px 0 12px;
+    font-size: 30px;
+}
+
+p {
+    color: #77505d;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 30px;
+    background: #e75480;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+    background: #d93d6c;
+}
+
+#message {
+    display: none;
+    margin-top: 25px;
+    color: #d93d6c;
+    line-height: 1.8;
+    animation: appear 0.7s ease;
+}
+
+.heart {
+    position: absolute;
+    bottom: -30px;
+    animation: float 6s linear forwards;
+    pointer-events: none;
+}
+
+.small {
+    margin-top: 25px;
+    color: #bc8797;
+    font-size: 12px;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="emoji">🌷</div>
+
+    <h1>Hey, You! 💗</h1>
+
+    <p>
+        Sooo... we've only just started talking,
+        but I wanted to do something a little different
+        instead of just sending another text. 😭
+    </p>
+
+    <br>
+
+    <p>
+        I don't know you that well yet,
+        but you seem interesting,
+        and I'm genuinely glad we started talking. 😊
+    </p>
+
+    <button onclick="reveal()">One little thing... 💌</button>
+
+    <div id="message">
+        <h3>Here's the thing... 💕</h3>
+        <br>
+        I kinda hope we keep talking.
+        <br>
+        I wanna get to know you better,
+        hear more about your day,
+        and hopefully make you smile sometimes. :)
+        <br><br>
+        <strong>No pressure, just good vibes. 🌸</strong>
+    </div>
+
+    <div class="small">A tiny surprise, made just for you zizee✨</div>
+</div>
+
+<script>
+function reveal() {
+    const message = document.getElementById("message");
+
+    if (message.style.display === "block") {
+        message.style.display = "none";
+    } else {
+        message.style.display = "block";
+
+        for (let i = 0; i < 18; i++) {
+            setTimeout(createHeart, i * 120);
+        }
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = ["💗", "💕", "🌸", "✨"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (16 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6500);
+}
+</script>
+
+</body>
+</html>
